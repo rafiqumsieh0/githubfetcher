@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">GithubFetcher</string>
+    <string name="github_repository_owner">rafiqumsieh0</string>
+    <string name="github_repository_name">supervised-hebbian</string>
+    <string name="empty_list_message">There are no commits at the moment, please try refreshing.</string>
+</resources>
