@@ -58,9 +58,12 @@ public class MainRepository {
                                             application.getResources().getString(R.string.github_repository_name ));
             commits.subscribeOn(Schedulers.io()).subscribe(commitsList -> {
                 Completable deleteCommits = commitDao.deleteAllCommits();
-                deleteCommits.subscribeOn(Schedulers.io()).subscribe(()->{Log.d("Success","Success");}, e->Log.e("DeleteError",e.getMessage()));
-                 Completable insertCommits = commitDao.insertCommits(commitsList);
-                 insertCommits.subscribeOn(Schedulers.io()).subscribe(()->{Log.d("Success","Success");}, e->Log.e("InsertError",e.getMessage()));
+                deleteCommits.subscribeOn(Schedulers.io()).subscribe(()->{
+                    Log.d("Delete Success","Success");
+                    Completable insertCommits = commitDao.insertCommits(commitsList);
+                    insertCommits.subscribeOn(Schedulers.io()).subscribe(()->{Log.d("Insert Success","Success");}, e->Log.e("InsertError",e.getMessage()));
+                    }, e->Log.e("DeleteError",e.getMessage()));
+
             });
         }
         else{

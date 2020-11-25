@@ -12,11 +12,11 @@ This App Works on Min SDK level 21, and targets SDK Level 30.
 
 ## Bugs
 
-Currently, there is a bug when loading locally-saved data from Room in offline mode (no internet connectivity).
+Currently, there is a bug when loading locally-saved data from Room in offline mode (no internet connectivity). It saves twice, and profile picture urls need to be saved too.
 
 ## Needed Improvements
 
-- Code Refactoring
+- More Code Refactoring
 - Adding Infinite Scrolling
 - Better UI
 - Adding a Detail Activity

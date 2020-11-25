@@ -39,7 +39,7 @@ public class CommitsViewModel extends AndroidViewModel {
 
         observable.subscribe(o -> {
             activityDataStatusLiveData.setValue(new ActivityDataStatus(false, false,""));
-            commitsMutableLiveData.setValue(o);
+                commitsMutableLiveData.setValue(o);
                     },
                 e-> {
                     activityDataStatusLiveData.setValue(new ActivityDataStatus(false, true,e.getMessage().toString()));

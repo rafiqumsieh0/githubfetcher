@@ -54,8 +54,6 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.CommitVi
             commitMessageTextView = itemView.findViewById(R.id.commitMessageTextView);
             commitHashTextView = itemView.findViewById(R.id.commitHashTextView);
             commitAutherProfileImage = itemView.findViewById(R.id.committerProfileImage);
-
-
         }
     }
 }

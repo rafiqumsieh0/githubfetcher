@@ -14,7 +14,7 @@ import androidx.room.TypeConverters;
 // Database Instantiation
 // Added Converters that convert between POJO and JSON to store in ROOM
 
-@Database(entities = {ApiResponse.class}, version=1)
+@Database(entities = {ApiResponse.class}, version=2)
 @TypeConverters(Converters.class)
 public abstract class CommitDatabase extends RoomDatabase {
     private static CommitDatabase instance;

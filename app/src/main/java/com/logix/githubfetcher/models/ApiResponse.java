@@ -16,13 +16,12 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "commits_table")
 public class ApiResponse {
-
-    @SerializedName("sha")
-    @Expose
     @NonNull
-    @PrimaryKey
-    @ColumnInfo(name = "sha")
-    private String sha;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    @SerializedName("sha")
+    @Ignore
+    private transient String sha;
     @SerializedName("node_id")
     @Ignore
     private transient String nodeId;
@@ -47,6 +46,14 @@ public class ApiResponse {
     @SerializedName("parents")
     @Ignore
     private transient List<Parent> parents = null;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSha() {
         return sha;
