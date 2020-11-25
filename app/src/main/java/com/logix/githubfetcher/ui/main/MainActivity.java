@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import com.logix.githubfetcher.BaseApplication;
 import com.logix.githubfetcher.R;
 //import com.logix.githubfetcher.dagger.components.DaggerAppComponent;
+import com.logix.githubfetcher.dagger.components.DaggerAppComponent;
 import com.logix.githubfetcher.dagger.modules.AppModule;
 import com.logix.githubfetcher.models.ApiResponse;
 import com.logix.githubfetcher.viewmodels.CommitsViewModel;
@@ -40,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        DaggerAppComponent.builder()
-//                .appModule(new AppModule(getApplication()))
-//                .build()
-//                .inject(this);
+        DaggerAppComponent.builder()
+                .appModule(new AppModule(getApplication()))
+                .build()
+                .inject(this);
 
 
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(MainActivity.this));
-        //((BaseApplication) getApplication()).getAppComponent().inject(this);
+        ((BaseApplication) getApplication()).getAppComponent().inject(this);
         commitsViewModel = ViewModelProviders.of(this).get(CommitsViewModel.class);
         commitsViewModel.getCommits();
 
@@ -70,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // Load UI depending on the data received. If it is still loading, display a progress bar. If there is an error, display text
+        // If data is loaded, display the RecyclerView.
         commitsViewModel.activityDataStatusLiveData.observe(this, new Observer<CommitsViewModel.ActivityDataStatus>() {
             @Override
             public void onChanged(CommitsViewModel.ActivityDataStatus activityDataStatus) {
